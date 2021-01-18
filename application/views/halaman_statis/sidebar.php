@@ -18,14 +18,18 @@ $().ready(function(){
             <li class="nav-item">
               <a class="nav-link" id="main" href="<?php echo base_url(); ?>">Main page<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+           
+             <li class="nav-item">
               <a class="nav-link" id="data" href="<?php echo base_url('dashboard/data_siswa'); ?>">Data siswa</a>
             </li>
+
+             <?php if ($this->session->userdata('status_login') !== FALSE AND $this->session->userdata('posisi_login') === "m" OR $this->session->userdata('posisi_login') === "a") : ?>
             <li class="nav-item">
               <a class="nav-link" id="absen" href="<?php echo base_url('dashboard/absen_siswa') ?>">Absen siswa</a>
             </li>
+            <?php endif; ?>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('dashboard/struktur') ?>">Struktur kelas</a>
+              <a class="nav-link" href="<?php echo base_url('dashboard/struktur') ?>">Struktur Sekolah</a>
             </li>
           </ul>
         </nav>

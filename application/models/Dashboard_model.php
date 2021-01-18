@@ -14,6 +14,19 @@ class Dashboard_model extends CI_Model{
     $q=$this->db->get('data_siswa');
     return $q;
   }
+   function edit_data($where,$table){                              
+    return $this->db->get_where($table,$where);
+
+  }
+   function update_data($where,$data,$table){
+
+     $this->db->where($where);
+    $this->db->update($table,$data);
+  }
+  function hapus_data($where,$table){
+    $this->db->where($where);
+    $this->db->delete($table);
+  }
   function get_detailsiswa($data){
     $this->db->where($data);
     $query = $this->db->get('data_siswa');

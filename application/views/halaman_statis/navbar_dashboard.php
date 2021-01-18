@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-reboot.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/sidebar.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/struktur.css'); ?>">
+
     <script src="<?php echo base_url('assets/jquery-3.2.1.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">NGNL <span style="font-size:12px;">Beta</span></a>
+  <a class="navbar-brand" href="#"><img src="<?php echo base_url('logo.png'); ?>" style="margin-bottom: 6px" height="25px" width="25px"> <span> SMKN 63 JAKARTA </span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

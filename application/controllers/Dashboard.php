@@ -33,6 +33,55 @@ class Dashboard extends CI_Controller{
     $this->load->view('main_page',$data);
   }
 
+  function tambah_siswa(){
+    $this->load->view('data_siswa/v_tambah_mahasiswa');
+  }
+
+  function simpan_mahasiswa()
+  {
+    $data = array(
+    'nis'=>$this->input->post('nis'),
+    'nama_lengkap'=>$this->input->post('nama'),
+    'tgl_lahir'=>$this->input->post('tanggal_lhr'),
+    'kelas'=>$this->input->post('kelas'),
+    'jurusan'=>$this->input->post('jurusan')
+     );
+     $res = $this->db->insert('data_siswa',$data);
+      if($res==true)
+      {
+          $this->session->set_flashdata('success', "SUCCESS_MESSAGE_HERE"); 
+      }else{
+          $this->session->set_flashdata('error', "ERROR_MESSAGE_HERE");
+      }
+     redirect('dashboard/data_siswa');
+  }
+
+  function hapus($nis){
+    $where = array('nis' => $nis);
+    $this->dashboard_model->hapus_data($where,'data_siswa');
+    redirect('dashboard/data_siswa');
+  }
+
+  function update()
+  {
+    $data = array(
+    'nis'=>$this->input->post('nis'),
+    'nama_lengkap'=>$this->input->post('nama'),
+    'tgl_lahir'=>$this->input->post('tgl_lahir'),
+    'kelas'=>$this->input->post('kelas'),
+    'jurusan'=>$this->input->post('jurusan')
+     );
+     $res = $this->db->update('data_siswa',$data);
+      if($res==true)
+      {
+          $this->session->set_flashdata('success', "SUCCESS_MESSAGE_HERE"); 
+      }else{
+          $this->session->set_flashdata('error', "ERROR_MESSAGE_HERE");
+      }
+     redirect('dashboard/data_siswa');
+  }
+
+ 
   function data_siswa(){
     $this->load->view('data_siswa/vw_datasiswa');
   }
@@ -61,7 +110,7 @@ class Dashboard extends CI_Controller{
   }
 
   function ket_absen($nis){
-    if ($this->session->userdata('status_login') !== FALSE AND $this->session->userdata('posisi_login') === "m"){
+    if ($this->session->userdata('status_login') !== FALSE AND $this->session->userdata('posisi_login') === "m" OR $this->session->userdata('posisi_login') === "a"){
     $list_siswa=array(
       'nis'   => $nis,
     );
@@ -120,7 +169,9 @@ class Dashboard extends CI_Controller{
     $data['jumlah']=$this->dashboard_model->pencarian($data['what'])->num_rows();
     $this->load->view('pencarian/vw_hasilpencarian',$data);
   }
+
   function verify_siswa($nis){
+    if ($this->session->userdata('status_login') !== FALSE AND $this->session->userdata('posisi_login') === "m"){
     $data=array(
       'status_absen' => 'tidak,verif',
     );
@@ -130,6 +181,9 @@ class Dashboard extends CI_Controller{
     }else{
       echo "szz";
     }
+    }else{
+    echo "<script>alert('Anda tidak memiliki akses ke halaman web ini, Hubungi administrator');window.location.href='".base_url('login')."'</script>";
+   }
   }
 }
 

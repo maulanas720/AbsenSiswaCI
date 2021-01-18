@@ -10,9 +10,9 @@ class Login extends CI_Controller{
     $this->load->view('halaman_statis/navbar_dashboard');
   }
   private function hash_password($pass){
-    // $hash = md5(sha1(md5(md5($pass))));
-    // md5($pass);
-    // return crypt('$2y$',$pass);
+     // $hash = md5(sha1(md5(md5($pass))));
+     //md5($pass);
+     //return crypt('$2y$',$pass);
     return md5($pass);
   }
   function index(){
@@ -23,7 +23,7 @@ class Login extends CI_Controller{
 
     if ($this->form_validation->run()){
       $encrypt=$this->hash_password($this->input->post('pass'));
-       // echo $encrypt;
+        //echo $encrypt;
       $data_pass=array(
         'password' => $encrypt
       );
@@ -46,8 +46,8 @@ class Login extends CI_Controller{
 
         redirect("dashboard");
       }else{
-         // echo "Tidak berhasil";
-        echo "<script>alert('Password tidak terdaftar');window.location.href='".base_url('login')."'</script>";
+        
+        echo "<script>alert('Password tidak terdaftar'); window.location.href='".base_url('login')."'</script>";
       }
     }else{
       echo "Kesalahan";

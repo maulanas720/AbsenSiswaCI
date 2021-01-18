@@ -29,7 +29,7 @@
           if ($k->status){
             echo "<i class='fa fa-camera-retro</i>'>";
           }else{
-            echo "Tidak";
+            echo "";
           }
         ?></th>
       <td><?php echo $k->alasan; ?></td>
