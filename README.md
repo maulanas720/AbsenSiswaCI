@@ -5,7 +5,7 @@ Absensi siswa online menggunakan framework ci
 <li>Login - logout</li>
 <li>Hak akses</li>
 <li>Guru dapat mengkonfirmasi siswa yang tidak masuk</li>
-<li>Struktur kelas</li>
+<li>Add,Update,Delete data siswa</li>
 <li>Dibuat dengan CI</li>
 </ul>
 <small>Masoh banyak yang kurang, Anda juga bisa mengembangkanyya</small>
